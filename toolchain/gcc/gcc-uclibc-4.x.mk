@@ -185,10 +185,34 @@ endif
 ifeq ($(findstring x4.7.,x$(GCC_VERSION)),x4.7.)
 GCC_WITH_HOST_MPC = --with-mpc=$(HOST_DIR)/usr
 GCC_TARGET_PREREQ += mpc
+
+ifeq ($(BR2_GCC_LINK_PPL),y)
+GCC_WITH_HOST_PPL = --with-ppl=$(HOST_DIR)/usr
+GCC_TARGET_PREREQ += ppl
+endif
+
+ifeq ($(BR2_GCC_LINK_CLOOG),y)
+GCC_WITH_HOST_CLOOG = --enable-cloog-backend=isl --with-cloog=$(HOST_DIR)/usr
+GCC_TARGET_PREREQ += cloog
+endif
+
 ifeq ($(BR2_TOOLCHAIN_BUILDROOT),y)
 HOST_SOURCE += host-mpc-source
+ifeq ($(BR2_GCC_LINK_PPL),y)
+HOST_SOURCE += host-ppl-source
 endif
+ifeq ($(BR2_GCC_LINK_CLOOG),y)
+HOST_SOURCE += host-cloog-source
+endif
+endif
+
 GCC_HOST_PREREQ += host-mpc
+ifeq ($(BR2_GCC_LINK_PPL),y)
+GCC_HOST_PREREQ += host-ppl
+endif
+ifeq ($(BR2_GCC_LINK_CLOOG),y)
+GCC_HOST_PREREQ += host-cloog
+endif
 endif
 
 # GCC snapshot prerequisites
@@ -307,6 +331,8 @@ $(GCC_BUILD_DIR1)/.configured: $(GCC_DIR)/.patched
 		$(GCC_WITH_HOST_GMP) \
 		$(GCC_WITH_HOST_MPFR) \
 		$(GCC_WITH_HOST_MPC) \
+		$(GCC_WITH_HOST_PPL) \
+		$(GCC_WITH_HOST_CLOOG) \
 		$(DISABLE_NLS) \
 		$(THREADS) \
 		$(GCC_DECIMAL_FLOAT) \
@@ -375,6 +401,8 @@ $(GCC_BUILD_DIR2)/.configured: $(GCC_DIR)/.patched
 		$(GCC_WITH_HOST_GMP) \
 		$(GCC_WITH_HOST_MPFR) \
 		$(GCC_WITH_HOST_MPC) \
+		$(GCC_WITH_HOST_PPL) \
+		$(GCC_WITH_HOST_CLOOG) \
 		$(DISABLE_NLS) \
 		$(THREADS) \
 		$(MULTILIB) \
@@ -456,6 +484,8 @@ $(GCC_BUILD_DIR3)/.configured: $(GCC_SRC_DIR)/.patched $(GCC_STAGING_PREREQ)
 		$(GCC_WITH_HOST_GMP) \
 		$(GCC_WITH_HOST_MPFR) \
 		$(GCC_WITH_HOST_MPC) \
+		$(GCC_WITH_HOST_PPL) \
+		$(GCC_WITH_HOST_CLOOG) \
 		$(DISABLE_NLS) \
 		$(THREADS) \
 		$(GCC_DECIMAL_FLOAT) \

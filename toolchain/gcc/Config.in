@@ -39,6 +39,23 @@ choice
 		bool "gcc snapshot"
 endchoice
 
+config BR2_GCC_LINK_PPL
+    bool "Link GCC with The Parma Polyhedra Library (PPL)?"
+    default n
+    depends on BR2_GCC_VERSION_4_7_X
+    help
+      The Parma Polyhedra Library (PPL) provides numerical abstractions
+      especially targeted at applications in the field of analysis and
+      verification of complex systems. http://bugseng.com/products/ppl
+
+config BR2_GCC_LINK_CLOOG
+    bool "Link GCC with CLooG?"
+    default n
+    depends on BR2_GCC_VERSION_4_7_X
+    help
+      CLooG is a free software and library to generate code for scanning
+      Z-polyhedra. http://www.cloog.org
+
 config BR2_GCC_SUPPORTS_FINEGRAINEDMTUNE
 	bool
 	default y if !BR2_GCC_VERSION_4_2_2_AVR32_2_1_5
