@@ -1,3 +1,38 @@
+2013.02, Released February 28th, 2013:
+
+	Misc manual updates.
+
+	Updated/fixed packages: busybox, collectd, flashbench,
+	libgtk2, libupnp, mii-diag, quota
+
+2013.02-rc3, Released February 26th, 2013
+
+	Minor fixes.
+
+	Updated/fixed packages: conntrack-tools, dialog,
+	enlightenment, haserl, keyutils, libfif, libmad,
+	linux-firmware, linux-fusion, matchbox-desktop, matchbox-wm,
+	ruby, spawn-fcgi, vtun
+
+	Issues resolved (http://bugs.uclibc.org):
+
+	#5960: fusion.ko driver does not install to target rootfs
+
+2013.02-rc2, Released February 19th, 2013
+
+	Fixes all over the tree.
+
+	Various manual updates and fixes.
+
+	Updated/fixed packages: busybox, collectd, gesftpserver,
+	glib-networking, gnutls, inotify-tools, libcurl, libffi,
+	libglib2, libtorrent, libvorbis, neard, network-manager,
+	ntfs-3g, openssl, qt, rpi-userland, rtorrent, thttpd, vim.
+
+	Issues resolved (http://bugs.uclibc.org):
+
+	#5906: collectd client headers not exported
+
 2013.02-rc1, Released February 10th, 2013
 
 	Toolchain: Crosstool-ng 1.17.0, default to GCC 4.6.3, target
